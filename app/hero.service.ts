@@ -1,6 +1,6 @@
 import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
-
+import{ConnectionProvider} from './connection-provider/app.config';
 import 'rxjs/add/operator/toPromise';
 
 import { Hero } from './hero';
@@ -8,7 +8,7 @@ import { Hero } from './hero';
 @Injectable()
 export class HeroService {
 
-  private heroesUrl = 'http://localhost:3000/heroes';  // URL to web api
+  private heroesUrl = `${ConnectionProvider.url}/heroes`;  // URL to web api
 
   constructor(private http: Http) { }
 
@@ -16,20 +16,20 @@ export class HeroService {
     return this.http.get(this.heroesUrl)
                .toPromise()
                .then((response)=>{
-                 var heroesFromServer=response;
-                 console.log(heroesFromServer);
-                 return heroesFromServer.json().data as Hero[];
+                 return response.json() as Hero[];
                })
                .catch(this.handleError);
   }
 
-  getHero(id: number) {
+  getHero(_id: string) {
     return this.getHeroes()
-               .then(heroes => heroes.find(hero => hero.id === id));
+               .then((heroes) => {
+                 return heroes.find(hero => hero._id === _id);
+                });
   }
 
   save(hero: Hero): Promise<Hero>  {
-    if (hero.id) {
+    if (hero._id) {
       return this.put(hero);
     }
     return this.post(hero);
@@ -39,7 +39,7 @@ export class HeroService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    let url = `${this.heroesUrl}/${hero.id}`;
+    let url = `${this.heroesUrl}/${hero._id}`;
 
     return this.http
                .delete(url, {headers: headers})
@@ -55,7 +55,7 @@ export class HeroService {
     return this.http
                .post(this.heroesUrl, JSON.stringify(hero), {headers: headers})
                .toPromise()
-               .then(res => res.json().data)
+               .then(res => res.json())
                .catch(this.handleError);
   }
 
@@ -64,7 +64,7 @@ export class HeroService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    let url = `${this.heroesUrl}/${hero.id}`;
+    let url = `${this.heroesUrl}/${hero._id}`;
 
     return this.http
                .put(url, JSON.stringify(hero), {headers: headers})
