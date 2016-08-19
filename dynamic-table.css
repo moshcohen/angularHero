@@ -1,0 +1,10 @@
+.table-container {
+    overflow: hidden;
+    width: 440px;
+    margin: -5px;
+}
+
+.table-cell{
+    float: left;
+}
+

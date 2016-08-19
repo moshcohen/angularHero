@@ -45,7 +45,7 @@
   margin-right: .8em;
   border-radius: 4px 0 0 4px;
 }
-button {
+/*button {
   font-family: Arial;
   background-color: #eee;
   border: none;
@@ -53,7 +53,7 @@ button {
   border-radius: 4px;
   cursor: pointer;
   cursor: hand;
-}
+}*/
 button:hover {
   background-color: #cfd8dc;
 }
