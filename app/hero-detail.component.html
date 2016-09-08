@@ -6,10 +6,13 @@
   <div class="form-area">
     <label>name: </label>
     <input [(ngModel)]="hero.name" placeholder="name" name="name"/>
-    <div>
+    <div class="details-container">
         <label> picture: </label>
             <img [src]="hero.picture" class="img-thumbnail">
             <input [(ngModel)]="hero.picture" placeholder="picture" name="picture"/>
+    </div>
+    <div>
+      <button class="btn btn-primary">View Missions</button>
     </div>
   </div>
   <button (click)="goBack()">Back</button>

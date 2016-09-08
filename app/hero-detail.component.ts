@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-
+import { Router }            from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
 
 import { Hero }        from './hero';
@@ -18,6 +18,7 @@ export class HeroDetailComponent implements OnInit {
 
   constructor(
     private heroService: HeroService,
+    private router:Router,
     private route: ActivatedRoute) {
   }
 
@@ -48,6 +49,12 @@ export class HeroDetailComponent implements OnInit {
     this.close.emit(savedHero);
     if (this.navigated) { window.history.back(); }
   }
+  
+ goToMissions(hero: Hero) {
+    let link = ['/missions', hero._id];
+    this.router.navigate(link);
+  }
+
 }
 
 

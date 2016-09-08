@@ -1,0 +1,17 @@
+.card { 
+    margin: 20px;
+    background: blue;
+    width: 200px;
+    height: 200px;
+    transition: all 0.6s ease;
+    transform-style: preserve-3d;
+}
+
+
+.card:hover {
+    transform: rotateY(30deg);
+}
+
+.card-container {
+    perspective: 700;
+}

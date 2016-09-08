@@ -18,6 +18,10 @@ import { HeroSearchComponent }  from './hero-search.component';
 import {UserOptionsComponent} from './user-options/user-options.component';
 import {HeroCardComponent} from './hero-card/hero-card.component';
 import { HeroService }  from './hero.service';
+import {MissionDashboardComponent} from './mission/mission-dashboard.component';
+import {MissionCardComponent} from './mission/mission-card/mission-card.component';
+import {MissionService} from './mission/mission.service';
+
 
 @NgModule({
   imports: [
@@ -33,10 +37,13 @@ import { HeroService }  from './hero.service';
     HeroDetailComponent,
     HeroSearchComponent,
     UserOptionsComponent,
-    HeroCardComponent
+    HeroCardComponent,
+    MissionDashboardComponent,
+    MissionCardComponent
   ],
   providers: [
-    HeroService
+    HeroService,
+    MissionService
     // { provide: XHRBackend, useClass: InMemoryBackendService }, // in-mem server
     // { provide: SEED_DATA,  useClass: InMemoryDataService }     // in-mem server data
   ],

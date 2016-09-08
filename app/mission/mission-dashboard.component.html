@@ -1,0 +1,8 @@
+<h3>{{hero.name}}`s missions: </h3>
+<div class="table-container">
+  <div *ngFor="let mission of missions" (click)="gotoDetail(mission)"
+   class="card-container table-cell" ontouchstart="this.classList.toggle('hover');">
+    <mission-card [mission]="mission"></mission-card>
+  </div>
+</div>
+

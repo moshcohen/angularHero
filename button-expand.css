@@ -1,0 +1,27 @@
+.expando {
+display: inline-block;
+background-color: #d11b34;
+color: #fff;
+text-decoration: none;
+font-size: 20px;
+padding: 10px;
+padding-right: 20px;
+padding-left: 20px;
+-webkit-border-radius: 15px;
+-moz-border-radius: 15px;
+border-radius: 15px;
+transition: all 0.6s ease;
+-webkit-transform: translate3d(0,0,0);
+-moz-transform: translate3d(0,0,0);
+-ms-transform: translate3d(0,0,0);
+-o-transform: translate3d(0,0,0);
+transform: translate3d(0,0,0);
+}
+
+.expando:hover {
+    background-color: #a61529;
+    padding: 15px;
+    padding-right: 25px;
+    padding-left: 25px;
+    margin: -5px;
+}
