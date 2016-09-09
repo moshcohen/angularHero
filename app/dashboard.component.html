@@ -3,7 +3,7 @@
 <div class="table-container">
   <div *ngFor="let hero of heroes" (click)="gotoDetail(hero)"
    class="card-container table-cell" ontouchstart="this.classList.toggle('hover');">
-    <hero-card [hero]="hero"  class="card-container"></hero-card>
+    <hero-card [hero]="hero"></hero-card>
   </div>
 </div>
 

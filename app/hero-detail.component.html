@@ -12,7 +12,7 @@
             <input [(ngModel)]="hero.picture" placeholder="picture" name="picture"/>
     </div>
     <div>
-      <button class="btn btn-primary">View Missions</button>
+      <button class="btn btn-primary" (click)="goToMissions(hero)" >View Missions</button>
     </div>
   </div>
   <button (click)="goBack()">Back</button>

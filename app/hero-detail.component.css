@@ -27,6 +27,11 @@ button:disabled {
   cursor: auto;
 }
 
+.details-container{
+  height: 500px;
+  width: 500px;
+}
+
 
 /*
 Copyright 2016 Google Inc. All Rights Reserved.

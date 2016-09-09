@@ -1,6 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { Router }            from '@angular/router';
-
+import { ActivatedRoute, Params } from '@angular/router';
 import { Hero }        from '../hero';
 import { HeroService } from '../hero.service';
 
@@ -9,22 +9,36 @@ import {MissionService} from './mission.service';
 
 @Component({
   selector: 'mission-dashboard',
-  templateUrl: 'app/mission-dashboard.component.html',
-  styleUrls: ['app/mission-dashboard.component.css']
+  templateUrl: 'app/mission/mission-dashboard.component.html',
+  styleUrls: ['app/mission/mission-dashboard.component.css']
 })
 export class MissionDashboardComponent implements OnInit {
-  @Input() hero: Hero;
+  hero: Hero;
   missions: Mission[] = [];
-
+  navigated = false; // true if navigated here
   constructor(
     private router: Router,
-    private missionService: MissionService) {
+    private route:ActivatedRoute,
+    private missionService: MissionService,
+    private heroService: HeroService) {
   }
 
   ngOnInit() {
-    this.missionService.getMissions(this.hero._id)
-      .then(missions => this.missions = missions);
-      console.log(this.missions);
+   this.route.params.forEach((params: Params) => {
+      if (params['id'] !== undefined) {
+        let id = params['id'];
+        this.navigated = true;
+        this.missionService.getMissions(id)
+            .then(
+              missions => 
+              this.missions = missions);
+        this.heroService.getHero(id)
+            .then(hero=>this.hero=hero);
+      } else {
+        this.navigated = false;
+        this.missions = new Array<Mission>();
+      }
+    });
   }
 
   gotoDetail(mission: Mission) {
