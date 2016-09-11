@@ -21,12 +21,31 @@ export class HeroService {
                .catch(this.handleError);
   }
 
+  getHeroesById(heroIds: string[]) {
+    let headers = new Headers({
+      'Content-Type': 'application/json'});
+
+    return this.http
+               .post(`${this.heroesUrl}/heroes/`, JSON.stringify(heroIds), {headers: headers})
+               .toPromise()
+               .then(res => res.json() as Hero[])
+               .catch(this.handleError);
+  }
   getHero(_id: string) {
     return this.getHeroes()
                .then((heroes) => {
                  return heroes.find(hero => hero._id === _id);
                 });
   }
+
+   getHeroPicture(_id: string) {
+    return this.http.get(`${this.heroesUrl}/heroPicture/${_id}`)
+               .toPromise()
+               .then((response)=>{
+                 return response.text();
+               })
+               .catch(this.handleError);
+   }
 
   save(hero: Hero): Promise<Hero>  {
     if (hero._id) {

@@ -13,7 +13,6 @@ import {MissionService} from './mission.service';
   styleUrls: ['app/mission/mission-dashboard.component.css']
 })
 export class MissionDashboardComponent implements OnInit {
-  hero: Hero;
   missions: Mission[] = [];
   navigated = false; // true if navigated here
   constructor(
@@ -32,8 +31,7 @@ export class MissionDashboardComponent implements OnInit {
             .then(
               missions => 
               this.missions = missions);
-        this.heroService.getHero(id)
-            .then(hero=>this.hero=hero);
+       
       } else {
         this.navigated = false;
         this.missions = new Array<Mission>();
@@ -42,7 +40,7 @@ export class MissionDashboardComponent implements OnInit {
   }
 
   gotoDetail(mission: Mission) {
-    let link = ['/detail', mission._id];
+    let link = ['/mission-detail', mission._id];
     this.router.navigate(link);
   }
 }

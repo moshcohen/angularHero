@@ -4,7 +4,7 @@ import { DashboardComponent }  from './dashboard.component';
 import { HeroesComponent }     from './heroes.component';
 import { HeroDetailComponent } from './hero-detail.component';
 import {MissionDashboardComponent} from './mission/mission-dashboard.component';
-
+import {MissionDetailComponent} from './mission/mission-detail/mission-detail.component';
 const appRoutes: Routes = [
   {
     path: '',
@@ -26,6 +26,10 @@ const appRoutes: Routes = [
   {
     path: 'missions/:id',
     component: MissionDashboardComponent
+  },
+  {
+    path: 'mission-detail/:id',
+    component: MissionDetailComponent
   }
 ];
 

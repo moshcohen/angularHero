@@ -1,0 +1,36 @@
+<div *ngIf="mission">
+  <h2>{{mission.name}} details!</h2>
+  <div>
+    <label>id: </label>{{mission.id}}</div>
+    
+  <div class="form-area">
+    <input [(ngModel)]="mission.name" placeholder="name" name="name"/>
+    <input [(ngModel)]="mission.assignee" placeholder="assignee" name="assignee"/>
+    <input [(ngModel)]="mission.assigner" placeholder="assigner" name="assigner"/>
+    <div *ngFor="let childMission of mission.childMissions">
+        {{childMission.name}}
+    </div>
+  </div>
+   <div class="form-area" *ngIf="heroes">
+     <div class="row">
+     <div class="col-sm-2 assignee img-circle wrapper" (click)="goToDetail(heroes[0])">
+        <img [src]="heroes[0].picture" class="img-circle card" placeholder="assignee" name="assignee"/>
+        <div class="heroName">{{heroes[0].name}}</div>
+     </div>
+     <div class="col-sm-8 target img-circle wrapper" (click)="goToDetail(heroes[2])">
+       <img [src]="heroes[2].picture" class="img-circle expando" placeholder="target" name="target"/>
+       <div class="heroName">{{heroes[2].name}}</div>
+     </div>
+     <div class="col-sm-2 assigner img-circle wrapper" (click)="goToDetail(heroes[1])">
+        <img [src]="heroes[1].picture" class="img-circle card" placeholder="assigner" name="assigner"/>
+        <div class="heroName">{{heroes[1].name}}</div>
+     </div>
+     </div>
+    
+    <div *ngFor="let childMission of mission.childMissions">
+        {{childMission.name}}
+    </div>
+  </div>
+  <button (click)="goBack()">Back</button>
+  <button (click)="save()">Save</button>
+</div>

@@ -13,7 +13,7 @@ export class MissionService {
   constructor(private http: Http) { }
 
   getMissions(_id: string) {
-    return this.http.get(`${this.missionUrl}/${_id}`)
+    return this.http.get(`${this.missionUrl}/heroMissions/${_id}`)
                .toPromise()
                .then((response)=>{
                  return response.json() as Mission[];
@@ -22,10 +22,12 @@ export class MissionService {
   }
 
   getMission(_id: string) {
-    return this.getMissions(_id)
-               .then((missions) => {
-                 return missions.find(mission => mission._id === _id);
-                });
+    return this.http.get(`${this.missionUrl}/${_id}`)
+               .toPromise()
+               .then((response) => {
+                 return response.json() as Mission;
+                })
+                .catch(this.handleError);
   }
 
   save(mission: Mission): Promise<Mission>  {

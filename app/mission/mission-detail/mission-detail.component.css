@@ -1,0 +1,24 @@
+.target{
+    background-color:  red;
+}
+
+.assignee{
+     background-color: blue;
+}
+
+.assigner{
+     background-color: black;
+}
+
+.wrapper .heroName{
+    text-align:center;
+    vertical-align: middle;
+    color: green;
+    /*left: 100px;
+    bottom: 100px;*/
+    visibility:hidden;
+}
+
+.wrapper:hover .heroName{
+    visibility:visible;
+}

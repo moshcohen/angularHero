@@ -21,7 +21,7 @@ import { HeroService }  from './hero.service';
 import {MissionDashboardComponent} from './mission/mission-dashboard.component';
 import {MissionCardComponent} from './mission/mission-card/mission-card.component';
 import {MissionService} from './mission/mission.service';
-
+import {MissionDetailComponent} from './mission/mission-detail/mission-detail.component';
 
 @NgModule({
   imports: [
@@ -39,7 +39,8 @@ import {MissionService} from './mission/mission.service';
     UserOptionsComponent,
     HeroCardComponent,
     MissionDashboardComponent,
-    MissionCardComponent
+    MissionCardComponent,
+    MissionDetailComponent
   ],
   providers: [
     HeroService,
