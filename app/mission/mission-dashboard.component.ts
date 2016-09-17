@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component,EventEmitter, OnInit,Input,Output } from '@angular/core';
 import { Router }            from '@angular/router';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Hero }        from '../hero';
@@ -13,6 +13,7 @@ import {MissionService} from './mission.service';
   styleUrls: ['app/mission/mission-dashboard.component.css']
 })
 export class MissionDashboardComponent implements OnInit {
+  @Output() close = new EventEmitter();
   missions: Mission[] = [];
   navigated = false; // true if navigated here
   constructor(
@@ -42,5 +43,9 @@ export class MissionDashboardComponent implements OnInit {
   gotoDetail(mission: Mission) {
     let link = ['/mission-detail', mission._id];
     this.router.navigate(link);
+  }
+
+  goBack(savedHero: Hero = null) {
+      window.history.back();
   }
 }
