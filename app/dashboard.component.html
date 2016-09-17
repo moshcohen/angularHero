@@ -1,7 +1,13 @@
 <h3>Top Heroes</h3>
-<hero-search></hero-search>
+   <md-card>
+      <button md-button>FLAT</button>
+      <button md-raised-button md-tooltip="This is a tooltip!">RAISED</button>
+      <button md-raised-button color="primary">PRIMARY RAISED</button>
+      <button md-raised-button color="accent">ACCENT RAISED</button>
+    </md-card>
+<input [(ngModel)]="filter">
 <div class="table-container">
-  <div *ngFor="let hero of heroes" (click)="gotoDetail(hero)"
+  <div *ngFor="let hero of (heroes | heroNameStartsWith:filter)" (click)="gotoDetail(hero)"
    class="card-container table-cell" ontouchstart="this.classList.toggle('hover');">
     <hero-card [hero]="hero"></hero-card>
   </div>

@@ -22,13 +22,18 @@ import {MissionDashboardComponent} from './mission/mission-dashboard.component';
 import {MissionCardComponent} from './mission/mission-card/mission-card.component';
 import {MissionService} from './mission/mission.service';
 import {MissionDetailComponent} from './mission/mission-detail/mission-detail.component';
+import {HeroNameStartsWithPipe} from './pipes/heroes-by-name.pipe'
 
+import { MdButtonModule } from '@angular2-material/button';
+import { MdCardModule } from '@angular2-material/card';
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     routing,
-    HttpModule
+    HttpModule,
+    MdButtonModule, 
+    MdCardModule
   ],
   declarations: [
     AppComponent,
@@ -40,7 +45,8 @@ import {MissionDetailComponent} from './mission/mission-detail/mission-detail.co
     HeroCardComponent,
     MissionDashboardComponent,
     MissionCardComponent,
-    MissionDetailComponent
+    MissionDetailComponent,
+    HeroNameStartsWithPipe
   ],
   providers: [
     HeroService,
